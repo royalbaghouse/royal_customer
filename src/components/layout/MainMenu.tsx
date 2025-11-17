@@ -56,7 +56,7 @@ export default function MainMenu() {
   };
 
   return (
-    <div className="relative hidden lg:block left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-[#facf35]">
+    <div className="relative hidden lg:block left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-[#000000]">
       <div className="container mx-auto w-full px-3 md:px-6 lg:px-36">
         <div className="flex items-center justify-between py-2 h-10">
           {/* Left menu */}

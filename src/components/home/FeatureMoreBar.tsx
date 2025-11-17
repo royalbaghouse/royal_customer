@@ -40,7 +40,7 @@ export default function FeatureMoreBar({
     <nav
       role="navigation"
       aria-label="Feature bar"
-      className={`w-full py-4 my-4 bg-[#facf35] ${className}`}
+      className={`w-full py-4 my-4 bg-[#000000] ${className}`}
     >
       <div className="container mx-auto px-3 md:px-4 xl:px-6">
         <div className="flex items-center justify-between h-10">

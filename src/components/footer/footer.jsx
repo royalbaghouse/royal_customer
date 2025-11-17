@@ -37,7 +37,7 @@ export default function Footer() {
                   className="h-10 w-auto mb-1"
                 />
               ) : (
-                <h2 className="text-2xl font-bold text-[#facf35] mb-1">AR Rahman Fashion</h2>
+                <h2 className="text-2xl font-bold text-[#000000] mb-1">AR Rahman Fashion</h2>
               )}
               <p className="text-sm text-gray-600 mb-6">
                 Connect with our social media platforms

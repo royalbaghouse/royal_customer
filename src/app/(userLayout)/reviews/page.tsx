@@ -166,7 +166,7 @@ export default function ReviewsMorePage() {
     return (
       <main className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#facf35] mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#000000] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading products...</p>
         </div>
       </main>
@@ -182,7 +182,7 @@ export default function ReviewsMorePage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1F2937] flex items-center gap-2">
-                <Trophy className="w-7 h-7 text-[#facf35]" />
+                <Trophy className="w-7 h-7 text-[#000000]" />
                 Top Reviews
               </h1>
               <p className="text-sm sm:text-base text-gray-600 mt-1">
@@ -223,7 +223,7 @@ export default function ReviewsMorePage() {
                 className={[
                   "h-9 rounded-full border px-4 text-sm transition",
                   activeCat === c
-                    ? "bg-[#facf35] text-[#2e2e2e] border-[#facf35]"
+                    ? "bg-[#000000] text-[#2e2e2e] border-[#000000]"
                     : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50",
                 ].join(" ")}
                 aria-pressed={activeCat === c}
@@ -285,7 +285,7 @@ export default function ReviewsMorePage() {
               >
                 {p.rating >= 4.5 && (
                   <div className="absolute left-2 top-2 z-10">
-                    <span className="inline-block rounded-full bg-[#facf35] text-[#2e2e2e] text-[10px] px-2 py-0.5 font-semibold">
+                    <span className="inline-block rounded-full bg-[#000000] text-[#2e2e2e] text-[10px] px-2 py-0.5 font-semibold">
                       TOP
                     </span>
                   </div>
@@ -327,7 +327,7 @@ export default function ReviewsMorePage() {
                         {formatBDT(p.oldPrice)}
                       </span>
                     )}
-                    <span className="text-base font-semibold text-[#facf35]">
+                    <span className="text-base font-semibold text-[#000000]">
                       {formatBDT(p.price)}
                     </span>
                   </div>
@@ -338,13 +338,13 @@ export default function ReviewsMorePage() {
                       className="flex-1"
                       aria-label={`View details of ${p.title}`}
                     >
-                      <Button className="w-full bg-[#facf35] hover:bg-[#facf35]/90 text-[#2e2e2e]">View</Button>
+                      <Button className="w-full bg-[#000000] hover:bg-[#000000]/90 text-[#2e2e2e]">View</Button>
                     </Link>
                     <Button
                       variant="outline"
                       className={clsx("w-10 px-0", {
                         'bg-green-600 hover:bg-green-600 text-[#2e2e2e]': isAddedToCart(p.id),
-                        'hover:bg-[#facf35] hover:text-[#2e2e2e]': !isAddedToCart(p.id)
+                        'hover:bg-[#000000] hover:text-[#2e2e2e]': !isAddedToCart(p.id)
                       })}
                       onClick={(e) => !isAddedToCart(p.id) && handleAddToCart(p, e)}
                       disabled={isAddedToCart(p.id)}
@@ -366,7 +366,7 @@ export default function ReviewsMorePage() {
                   disabled={isFetching}
                   variant="outline"
                   size="lg"
-                  className="px-8 bg-[#facf35] hover:bg-[#facf35]/90 text-[#2e2e2e] border-[#facf35]"
+                  className="px-8 bg-[#000000] hover:bg-[#000000]/90 text-[#2e2e2e] border-[#000000]"
                 >
                   {isFetching ? "Loading..." : "Load More Reviews"}
                 </Button>

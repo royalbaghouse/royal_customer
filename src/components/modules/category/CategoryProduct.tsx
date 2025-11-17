@@ -115,12 +115,12 @@ export default function CategoryProduct({ data = [], title = "New Products" }: P
                   <div className="flex items-center gap-2">
                     {p.salePrice ? (
                       <>
-                        <span className="text-sm font-bold text-[#facf35] md:text-lg">
+                        <span className="text-sm font-bold text-[#000000] md:text-lg">
                           {formatBDT(p.price)}
                         </span>
                       </>
                     ) : (
-                      <span className="text-sm font-bold text-[#facf35] md:text-lg">
+                      <span className="text-sm font-bold text-[#000000] md:text-lg">
                         {formatBDT(p.price)}
                       </span>
                     )}

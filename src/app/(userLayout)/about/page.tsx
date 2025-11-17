@@ -212,19 +212,19 @@ export default function AboutPage() {
         </h2>
         <ul className="mt-4 space-y-4">
           <li className="flex gap-3">
-            <div className="w-2 h-2 mt-2 rounded-full bg-[#facf35]" />
+            <div className="w-2 h-2 mt-2 rounded-full bg-[#000000]" />
             <p className="text-gray-700">
               <b>2020:</b> Started with a single street cart serving fresh beverages and snacks.
             </p>
           </li>
           <li className="flex gap-3">
-            <div className="w-2 h-2 mt-2 rounded-full bg-[#facf35]" />
+            <div className="w-2 h-2 mt-2 rounded-full bg-[#000000]" />
             <p className="text-gray-700">
               <b>2022:</b> Expanded to multiple locations and launched delivery service.
             </p>
           </li>
           <li className="flex gap-3">
-            <div className="w-2 h-2 mt-2 rounded-full bg-[#facf35]" />
+            <div className="w-2 h-2 mt-2 rounded-full bg-[#000000]" />
             <p className="text-gray-700">
               <b>2024:</b> Online ordering platform and expanded menu with specialty items.
             </p>
