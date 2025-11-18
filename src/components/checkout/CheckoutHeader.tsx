@@ -31,7 +31,7 @@ export default function CheckoutHeader({ currentStep }: CheckoutHeaderProps) {
             <div
               className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-medium ${
                 currentStep >= 1
-                  ? "bg-primary text-[#2e2e2e]"
+                  ? "bg-primary text-white"
                   : "bg-gray-200 text-gray-600"
               }`}
             >
@@ -56,7 +56,7 @@ export default function CheckoutHeader({ currentStep }: CheckoutHeaderProps) {
             <div
               className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-medium ${
                 currentStep >= 2
-                  ? "bg-primary text-[#2e2e2e]"
+                  ? "bg-primary text-white"
                   : "bg-gray-200 text-gray-600"
               }`}
             >
@@ -81,7 +81,7 @@ export default function CheckoutHeader({ currentStep }: CheckoutHeaderProps) {
             <div
               className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-medium ${
                 currentStep >= 3
-                  ? "bg-primary text-[#2e2e2e]"
+                  ? "bg-primary text-white"
                   : "bg-gray-200 text-gray-600"
               }`}
             >
@@ -106,7 +106,7 @@ export default function CheckoutHeader({ currentStep }: CheckoutHeaderProps) {
             <div
               className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-medium ${
                 currentStep >= 4
-                  ? "bg-primary text-[#2e2e2e]"
+                  ? "bg-primary text-white"
                   : "bg-gray-200 text-gray-600"
               }`}
             >

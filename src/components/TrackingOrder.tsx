@@ -105,16 +105,16 @@ export default function TrackingOrder() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-primary text-secondary py-12">
+      <div className="bg-primary text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="p-3 bg-white/20 rounded-full">
-                <Truck size={32} className="text-secondary" />
+                <Truck size={32} className="text-white" />
               </div>
               <h1 className="text-3xl md:text-5xl font-bold">Track Your Order</h1>
             </div>
-            <p className="text-lg text-secondary/90 max-w-2xl mx-auto">Enter your tracking information below to get real-time updates on your order status</p>
+            <p className="text-lg text-white/90 max-w-2xl mx-auto">Enter your tracking information below to get real-time updates on your order status</p>
           </div>
         </div>
       </div>
@@ -144,7 +144,7 @@ export default function TrackingOrder() {
                 <button
                   onClick={handleTracking}
                   disabled={!trackingInput.trim() || loading}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-black px-6 py-2 rounded-lg hover:bg-gray-300 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 font-medium flex items-center gap-2"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white px-6 py-2 rounded-lg hover:bg-gray-300 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all duration-300 font-medium flex items-center gap-2"
                 >
                   <Search size={16} />
                   {loading ? 'Tracking...' : 'Track'}
@@ -160,14 +160,14 @@ export default function TrackingOrder() {
             {trackingResult.success ? (
               <div className="bg-white rounded-2xl shadow-lg border border-green-200 overflow-hidden">
                 {/* Status Header */}
-                <div className="bg-primary text-secondary px-6 py-3">
+                <div className="bg-primary text-white px-6 py-3">
                   <div className="flex items-center gap-4">
                     <div className="p-3 bg-white/20 rounded-full">
                       <CheckCircle size={32} />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold">Order Found!</h3>
-                      <p className="text-secondary/90">Here&apos;s your order tracking information</p>
+                      <p className="text-white/90">Here&apos;s your order tracking information</p>
                     </div>
                   </div>
                 </div>
@@ -194,7 +194,7 @@ export default function TrackingOrder() {
                         </div>
                         
                         <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
-                          <Clock size={20} className="text-secondary mt-1" />
+                          <Clock size={20} className="text-gray-600 mt-1" />
                           <div>
                             <span className="text-sm font-semibold text-gray-600 block">Total Amount</span>
                             <p className="text-lg font-bold text-gray-900">৳{trackingResult.data.totalAmount}</p>
@@ -204,7 +204,7 @@ export default function TrackingOrder() {
                       
                       <div className="space-y-4">
                         <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
-                          <User size={20} className="text-secondary mt-1" />
+                          <User size={20} className="text-gray-600 mt-1" />
                           <div>
                             <span className="text-sm font-semibold text-gray-600 block">Customer</span>
                             <p className="text-lg font-bold text-gray-900">
@@ -215,7 +215,7 @@ export default function TrackingOrder() {
                         </div>
                         
                         <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl">
-                          <Phone size={20} className="text-secondary mt-1" />
+                          <Phone size={20} className="text-gray-600 mt-1" />
                           <div>
                             <span className="text-sm font-semibold text-gray-600 block">Phone</span>
                             <p className="text-lg font-bold text-gray-900">{trackingResult.data.customerInfo.phone}</p>
@@ -246,7 +246,7 @@ export default function TrackingOrder() {
                               )}
                             </div>
                             <div className="text-right">
-                              <p className="font-bold text-secondary">৳{item.totalAmount.total}</p>
+                              <p className="font-bold text-gray-900">৳{item.totalAmount.total}</p>
                             </div>
                           </div>
                         ))}

@@ -89,8 +89,8 @@ export default function TermsAndConditions() {
                     className={[
                       "block w-auto lg:w-full flex-shrink-0 text-left px-5 py-3 text-sm sm:text-base rounded-full transition-all duration-200 border truncate",
                       active
-                        ? "font-medium text-[#2e2e2e] bg-black border-black shadow-sm"
-                        : "text-gray-700 bg-white/60 border-gray-200 hover:bg-black hover:text-[#2e2e2e] hover:border-black",
+                        ? "font-medium text-white bg-black border-black shadow-sm"
+                        : "text-gray-700 bg-white/60 border-gray-200 hover:bg-black hover:text-white hover:border-black",
                       "focus:outline-none focus:ring-2 focus:ring-black/30",
                     ].join(" ")}
                   >
@@ -141,7 +141,7 @@ export default function TermsAndConditions() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-full bg-black hover:bg-black text-[#2e2e2e] px-6 py-3 text-sm sm:text-base font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-black/30 mb-2"
+              className="rounded-full bg-black hover:bg-black text-white px-6 py-3 text-sm sm:text-base font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-2 focus:ring-black/30 mb-2"
             >
               {isSubmitting ? "SENDING..." : "SEND"}
             </Button>

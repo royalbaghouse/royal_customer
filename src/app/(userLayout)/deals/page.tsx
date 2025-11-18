@@ -323,7 +323,7 @@ export default function DealsMorePage() {
                 className={[
                   "h-9 rounded-full border px-4 text-sm transition",
                   activeCat === c
-                    ? "bg-primary text-secondary border-primary"
+                    ? "bg-primary text-white border-primary"
                     : "bg-accent text-secondary border-neutral hover:bg-section",
                 ].join(" ")}
                 aria-pressed={activeCat === c}
@@ -350,7 +350,7 @@ export default function DealsMorePage() {
                     className={[
                       "h-7 rounded-full border px-3 text-xs transition",
                       minOff === d
-                        ? "0 text-[#2e2e2e] bg-primary border-primary"
+                        ? "0 text-white bg-primary border-primary"
                         : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50",
                     ].join(" ")}
                     aria-pressed={minOff === d}
@@ -418,7 +418,7 @@ export default function DealsMorePage() {
                       {pct}% OFF
                     </span>
                     {(p.badge || isNew) && (
-                      <span className="inline-block rounded-full bg-primary text-secondary text-[10px] px-2 py-0.5 font-semibold">
+                      <span className="inline-block rounded-full bg-primary text-white text-[10px] px-2 py-0.5 font-semibold">
                         {p.badge ?? "NEW"}
                       </span>
                     )}
@@ -475,7 +475,7 @@ export default function DealsMorePage() {
                         variant="outline"
                         className={clsx("w-10 px-0", {
                           'bg-success hover:bg-success text-accent': cartItems.some(item => item.productId === p.id),
-                          'hover:bg-primary hover:text-secondary': !cartItems.some(item => item.productId === p.id)
+                          'hover:bg-primary hover:text-white': !cartItems.some(item => item.productId === p.id)
                         })}
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                           e.preventDefault();

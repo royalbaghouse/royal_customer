@@ -15,13 +15,13 @@ const NavbarLogo = () => {
         {settings?.logo ? (
           <Image
             src={settings.logo}
-            alt="AR Rahman Fashion Logo"
+            alt=" Royal Bag House Logo"
             width={120}
             height={40}
             className="h-8 w-auto"
           />
         ) : (
-          <span className="text-xl font-bold">AR Rahman Fashion</span>
+          <span className="text-xl font-bold"> Royal Bag House </span>
         )}
       </Link>
     </div>

@@ -729,8 +729,8 @@ export default function ProductListing() {
                               className={clsx(
                                 "absolute top-2 right-2 h-8 w-8 transition-all duration-200 shadow-md",
                                 isAddedToCart(product.id)
-                                  ? " bg-green-600 text-secondary hover:bg-success  cursor-default shadow-lg"
-                                  : "bg-primary text-secondary hover:bg-green-400 hover:text-secondary  hover:shadow-lg"
+                                  ? " bg-green-600 text-white hover:bg-success  cursor-default shadow-lg"
+                                  : "bg-primary text-white hover:bg-green-400 hover:text-white  hover:shadow-lg"
                               )}
                               aria-label={`Add ${product.name} to cart`}
                               onClick={(e) =>

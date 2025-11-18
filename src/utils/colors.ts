@@ -79,7 +79,7 @@ export const colors = {
 // Utility functions for common color combinations
 export const colorCombinations = {
   // Button styles
-  primaryButton: 'bg-primary text-secondary hover:bg-primary-600',
+  primaryButton: 'bg-primary text-white hover:bg-primary-600',
   secondaryButton: 'bg-secondary text-accent hover:bg-secondary-800',
   highlightButton: 'bg-highlight text-accent hover:bg-highlight-800',
   

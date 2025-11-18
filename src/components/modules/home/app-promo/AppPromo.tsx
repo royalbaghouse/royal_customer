@@ -11,7 +11,7 @@ const AppPromo = () => {
       {/* Left Content */}
       <div className="max-w-lg">
         <p className="text-[10px] md:text-lg lg:text-xl text-secondary/70">
-          The AR Rahman FashionApp
+          The  Royal Bag House App
         </p>
         <h2 className="text-sm md:text-2xl lg:text-3xl font-semibold md:mt-2 text-secondary">
           Share your ideas & shop <br /> endless Inspiration

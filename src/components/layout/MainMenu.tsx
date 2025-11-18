@@ -56,11 +56,11 @@ export default function MainMenu() {
   };
 
   return (
-    <div className="relative hidden lg:block left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-[#000000]">
+    <div className="relative hidden lg:block left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-[#2E2E2E] text-white">
       <div className="container mx-auto w-full px-3 md:px-6 lg:px-36">
         <div className="flex items-center justify-between py-2 h-10">
           {/* Left menu */}
-          <nav className="flex items-center gap-5 text-sm text-[#2e2e2e] pl-6">
+          <nav className="flex items-center gap-5 text-sm text-white pl-6">
             <Link href="/" className="hover:underline">Home</Link>
             <Link href="/product-listing" className="hover:underline">Product</Link>
             <Link href="/about" className="hover:underline">About</Link>
@@ -68,7 +68,7 @@ export default function MainMenu() {
           </nav>
 
           {/* Right: Account + Cart */}
-          <div className="flex items-center gap-4 text-[#2e2e2e]">
+          <div className="flex items-center gap-4 text-white">
             {!isLoggedIn ? (
               // 🔓 লগইন না থাকলে - Login/Register link
               <Link href="/auth/login" className="text-sm hover:underline">
@@ -123,7 +123,7 @@ export default function MainMenu() {
             >
               <ShoppingCart size={20} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1 rounded-full text-xs bg-orange-500 text-[#2e2e2e] flex items-center justify-center font-medium">
+                <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1 rounded-full text-xs bg-orange-500 text-white flex items-center justify-center font-medium">
                   {cartCount > 99 ? '99+' : cartCount}
                 </span>
               )}

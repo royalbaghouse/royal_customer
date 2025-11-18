@@ -10,7 +10,7 @@ const AppPromo = () => {
     >
       {/* Left Content */}
       <div className="max-w-lg text-center md:text-left">
-        <p className="text-lg lg:text-xl opacity-90">The AR Rahman FashionApp</p>
+        <p className="text-lg lg:text-xl opacity-90">The  Royal Bag House App</p>
         <h2 className="text-2xl lg:text-3xl font-semibold mt-2">
           Share your ideas & shop <br /> endless Inspiration
         </h2>

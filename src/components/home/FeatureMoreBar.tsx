@@ -17,12 +17,12 @@ export default function FeatureMoreBar({
   const Left = left.href ? (
     <Link
       href={left.href}
-      className="font-bold text-[#2e2e2e] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm"
+      className="font-bold text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm"
     >
       {left.label}
     </Link>
   ) : (
-    <span className="font-bold text-[#2e2e2e]">{left.label}</span>
+    <span className="font-bold text-white">{left.label}</span>
   );
 
   const rightBase =
@@ -40,7 +40,7 @@ export default function FeatureMoreBar({
     <nav
       role="navigation"
       aria-label="Feature bar"
-      className={`w-full py-4 my-4 bg-[#000000] ${className}`}
+      className={`w-full py-4 my-4 bg-[#2E2E2E] text-white ${className}`}
     >
       <div className="container mx-auto px-3 md:px-4 xl:px-6">
         <div className="flex items-center justify-between h-10">

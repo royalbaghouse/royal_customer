@@ -171,7 +171,7 @@ src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d8676.406484110787!2d9
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="AR Rahman FashionLocation - Mirpur, Dhaka, Bangladesh"
+            title=" Royal Bag House Location - Mirpur, Dhaka, Bangladesh"
           />
         </div>
         <div className="bg-background flex items-center justify-center p-4 mt-8">

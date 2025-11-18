@@ -21,6 +21,8 @@ import {
   Shield,
   RotateCcw,
   Grid3X3,
+  LayoutDashboard,
+  User,
 } from "lucide-react";
 
 import {
@@ -247,6 +249,33 @@ export default function Navbar() {
               {/* Divider */}
               <div className="border-t border-gray-200 my-4" />
 
+
+              
+              {/* Dashboard Link - Only show if logged in */}
+              {isLoggedIn && (
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-3 p-3 bg-primary rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <LayoutDashboard size={20} />
+                  <span>Dashboard</span>
+                </Link>
+              )}
+
+              {/* My Profile Link - Only show if logged in */}
+              {isLoggedIn && (
+                <Link
+                  href="/dashboard/profile"
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <User size={20} />
+                  <span>My Profile</span>
+                </Link>
+              )}
+
+
               {/* Other Navigation Links */}
               <Link
                 href="/tracking-order"
@@ -320,7 +349,7 @@ export default function Navbar() {
                 {settings?.logo ? (
                   <Image
                     src={settings.logo}
-                    alt="AR Rahman FashionLogo"
+                    alt=" Royal Bag House Logo"
                     width={120}
                     height={40}
                     className="h-10"
@@ -328,7 +357,7 @@ export default function Navbar() {
                   />
                 ) : (
                   <span className="font-extrabold text-3xl text-primary">
-                    AR Rahman Fashion
+                     Royal Bag House 
                   </span>
                 )}
               </Link>
@@ -357,7 +386,7 @@ export default function Navbar() {
 
               <Link
                 href="/wishlist"
-                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-primary hover:text-secondary"
+                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-primary hover:text-white"
                 aria-label="wishlist"
               >
                 <Heart size={18} />
@@ -370,7 +399,7 @@ export default function Navbar() {
 
               <Link
                 href="/dashboard/checkout"
-                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-primary hover:text-secondary"
+                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-primary hover:text-white"
                 aria-label="cart"
               >
                 <ShoppingCart size={18} />
@@ -403,20 +432,20 @@ export default function Navbar() {
                   {/* {settings?.logo ? (
                     <Image
                       src={settings.logo}
-                      alt="AR Rahman FashionLogo"
+                      alt=" Royal Bag House Logo"
                       width={80}
                       height={32}
                       className="h-8 w-auto"
                     />
                   ) : ( */}
-                  <span className="font-bold text-xl text-accent">AR Rahman Fashion</span>
+                  <span className="font-bold text-xl text-accent"> Royal Bag House </span>
                   {/* )} */}
                 </Link>
               </div>
 
               <div className="flex items-center gap-2">
                 <button
-                  className="p-2 rounded-lg bg-accent text-secondary hover:bg-accent/90 transition-colors"
+                  className="p-2 rounded-lg bg-accent text-black hover:bg-gray-200 transition-colors"
                   aria-label="Search"
                   onClick={() => setIsSearchActive(true)}
                 >
@@ -425,7 +454,7 @@ export default function Navbar() {
 
                 <Link
                   href="/contact-us"
-                  className="hidden sm:block p-2 rounded-lg bg-accent text-secondary hover:bg-accent/90 transition-colors"
+                  className="hidden sm:block p-2 rounded-lg bg-accent text-black hover:bg-gray-200 transition-colors"
                   aria-label="Contact"
                 >
                   <Phone size={18} />
@@ -433,7 +462,7 @@ export default function Navbar() {
 
                 <Link
                   href="/dashboard/checkout"
-                  className="hidden sm:block relative p-2 rounded-lg bg-accent text-secondary hover:bg-accent/90 transition-colors"
+                  className="hidden sm:block relative p-2 rounded-lg bg-accent text-black hover:bg-gray-200 transition-colors"
                   aria-label="Cart"
                 >
                   <ShoppingCart size={18} />
@@ -447,7 +476,7 @@ export default function Navbar() {
                 {!isLoggedIn ? (
                   <Link
                     href="/auth/login"
-                    className="p-2 rounded-lg bg-accent text-secondary hover:bg-accent/90 transition-colors"
+                    className="p-2 rounded-lg bg-accent text-black hover:bg-gray-200 transition-colors"
                     aria-label="Login/Register"
                   >
                     <UserIcon size={18} />

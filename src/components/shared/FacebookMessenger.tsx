@@ -9,7 +9,7 @@ const FacebookMessenger = () => {
 
   const handleWhatsAppClick = () => {
     const whatsappLink = contactInfo?.whatsappLink?.[0];
-    const phone = contactInfo?.phone || '+8801736841333';
+    const phone = contactInfo?.phone || '';
     
     let url;
     if (whatsappLink && (whatsappLink.startsWith('https://wa.me/') || whatsappLink.startsWith('https://api.whatsapp.com/'))) {

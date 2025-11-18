@@ -212,7 +212,7 @@ export default function SmartSearch({
           placeholder={placeholder}
           aria-label="Search products"
           dir="auto"
-          className="w-full h-11 pl-10 pr-20 rounded-full outline-none bg-white text-sm md:text-base text-gray-900 placeholder-gray-500 border border-gray-200 lg:bg-transparent lg:border-[#000000]"
+          className="w-full h-11 pl-10 pr-20 rounded-full outline-none bg-white text-sm md:text-base text-gray-900 placeholder-gray-500 border border-gray-200 lg:bg-transparent lg:border-[#2E2E2E]"
         />
 
         {/* Clear Button - Inside Right */}
@@ -234,7 +234,7 @@ export default function SmartSearch({
         {/* Search Button - Inside Right */}
         <button
           type="button"
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#000000] text-[#2e2e2e] rounded-r-3xl p-3 hover:bg-[#6b4c3e] transition-colors flex items-center justify-center"
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#2E2E2E] text-white rounded-r-3xl p-3 hover:bg-[#6b4c3e] transition-colors flex items-center justify-center"
           aria-label="Search"
           onClick={() => handleSearch()}
         >
@@ -312,7 +312,7 @@ export default function SmartSearch({
 
                   {/* Price */}
                   {typeof s.price === "number" && (
-                    <div className="text-sm font-semibold text-[#000000] shrink-0 ml-2">
+                    <div className="text-sm font-semibold text-[#2E2E2E] shrink-0 ml-2">
                       {formatBDT(s.price)}
                     </div>
                   )}

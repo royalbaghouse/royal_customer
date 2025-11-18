@@ -98,7 +98,7 @@ export default function WishlistPage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Your wishlist is empty</h2>
           <p className="text-gray-600 mb-6">Save items you love to buy them later</p>
           <Link href="/product-listing">
-            <Button className="bg-primary hover:bg-primary/90 text-secondary">
+            <Button className="bg-primary hover:bg-primary/90 text-white">
               <ShoppingCart className="w-4 h-4 mr-2" />
               Start Shopping
             </Button>

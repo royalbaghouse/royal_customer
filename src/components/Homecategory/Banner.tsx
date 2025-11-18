@@ -32,7 +32,7 @@ import bennar from "../../../public/banner.png";
 //           <div className="space-y-6 text-start order-2 lg:order-1">
 //             <div className="text-[#2e2e2e]">
 //               <div className="flex bg-[#F7F7F7] text-black items-center gap-2 text-xs sm:text-sm md:text-base rounded-full px-2 py-1 w-fit">
-//                 <span className="bg-black px-3 sm:px-4 py-1 rounded-full text-[#2e2e2e] text-xs sm:text-sm">
+//                 <span className="bg-black px-3 sm:px-4 py-1 rounded-full text-white text-xs sm:text-sm">
 //                   News
 //                 </span>
 //                 <span className="text-xs sm:text-sm md:text-base">
@@ -54,7 +54,7 @@ import bennar from "../../../public/banner.png";
 //               setup and reach your customers quickly and efficiently.
 //             </p>
 
-//             <Button className="bg-black hover:bg-gray-800 text-[#2e2e2e] px-6 sm:px-8 py-2 sm:py-3 rounded-md font-medium flex items-center gap-2 text-sm sm:text-base w-fit">
+//             <Button className="bg-black hover:bg-gray-800 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-md font-medium flex items-center gap-2 text-sm sm:text-base w-fit">
 //               Sign Up Here
 //               <ChevronRight className="w-3 sm:w-4 h-3 sm:h-4" />
 //             </Button>

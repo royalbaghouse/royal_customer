@@ -25,7 +25,7 @@ const FALLBACK: Slide[] = [
   { 
     _id: "f1", 
     imageUrl: "/about1.jpg",
-    alt: "AR Rahman FashionBanner", 
+    alt: " Royal Bag House Banner", 
     href: "/products/footwear" 
   },
 ];

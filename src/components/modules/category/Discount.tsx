@@ -62,7 +62,7 @@ export default function Discount({
         <Button
           asChild
           variant="outline"
-          className="rounded-[12px] border border-neutral px-4 py-2 text-sm bg-primary hover:bg-gray-100 md:px-6 md:py-3 md:text-base"
+          className="rounded-[12px] border border-neutral px-4 py-2 text-sm bg-primary text-white hover:bg-gray-100 md:px-6 md:py-3 md:text-base"
         >
           <Link href="/discounts">
             View All <ChevronRight className="ml-1 inline h-4 w-4" />

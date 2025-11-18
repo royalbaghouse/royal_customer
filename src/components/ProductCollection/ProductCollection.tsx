@@ -98,7 +98,7 @@ const colors = [
   { name: "Purple", value: "#8b5cf6" },
   { name: "Pink", value: "#ec4899" },
   { name: "Gray", value: "#6b7280" },
-  { name: "Black", value: "#000000" },
+  { name: "Black", value: "#2E2E2E" },
 ];
 
 // Filter Panel

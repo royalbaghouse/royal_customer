@@ -189,7 +189,7 @@ const isIProduct = (item: unknown): item is IProduct => {
       <section className="w-full bg-gray-50 rounded-2xl p-6 md:p-12 flex items-center justify-between gap-6 md:gap-10">
         {/* Left Content */}
         <div className="flex-1 max-w-lg space-y-4">
-          <Badge className="px-4 py-2 rounded-full bg-primary text-[#2e2e2e] w-fit">
+          <Badge className="px-4 py-2 rounded-full bg-primary text-white w-fit">
             ● {subCategoryName || selectedCategory?.name || 'Category'}
           </Badge>
 

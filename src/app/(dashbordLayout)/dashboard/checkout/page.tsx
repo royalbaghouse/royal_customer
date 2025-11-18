@@ -388,15 +388,7 @@ export default function CheckoutPage() {
       deliveryCharge: deliveryCharge
     };
     
-    // Debug logging
-    console.log("Order Payload Debug:", {
-      deliveryArea,
-      deliveryCharge,
-      subTotal,
-      grandTotal,
-      finalTotal,
-      payload
-    });
+    
     
     return payload;
   };
@@ -559,7 +551,7 @@ export default function CheckoutPage() {
                   type="button"
                   onClick={handleNextStepOrSubmit}
                   disabled={createOrderLoading || cartItems.length === 0}
-                  className={`${currentStep === 1 ? 'w-full' : 'flex-2'} bg-[#000000] hover:bg-[#e6b82f] text-black h-12 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed px-6 transition-colors`}
+                  className={`${currentStep === 1 ? 'w-full' : 'flex-2'} bg-primary hover:bg-primary/80 hover:text-white text-white h-12 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed px-6 transition-colors`}
                 >
                   {createOrderLoading ? 'Creating Order...' : 
                     currentStep === 1 ? 'Continue to Shipping' :

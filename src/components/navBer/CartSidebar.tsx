@@ -223,7 +223,7 @@ export default function CartSidebar({
                   <span className="font-bold text-lg">{overallTotal}</span>
                 </div>
                 <Link href={`/dashboard/checkout`}>
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-[#2e2e2e]">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
                     Checkout
                   </Button>
                 </Link>

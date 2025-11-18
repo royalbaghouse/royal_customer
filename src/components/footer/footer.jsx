@@ -31,13 +31,13 @@ export default function Footer() {
               {settings?.logo ? (
                 <Image
                   src={settings.logo}
-                  alt="AR Rahman FashionLogo"
+                  alt=" Royal Bag House Logo"
                   width={120}
                   height={40}
                   className="h-10 w-auto mb-1"
                 />
               ) : (
-                <h2 className="text-2xl font-bold text-[#000000] mb-1">AR Rahman Fashion</h2>
+                <h2 className="text-2xl font-bold text-[#2E2E2E] mb-1"> Royal Bag House </h2>
               )}
               <p className="text-sm text-gray-600 mb-6">
                 Connect with our social media platforms
@@ -50,7 +50,7 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col gap-2">
                   {settings?.contactAndSocial?.facebookUrl?.map((url, index) => {
-                    const labels = ['AR Rahman Fashion Facebook Page', 'AR Rahman Fashion Facebook Page', 'AR Rahman FashionFacebook Page'];
+                   
                     return (
                       <a
                         key={index}
@@ -59,10 +59,9 @@ export default function Footer() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
                       >
-                        <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                           <Facebook className="w-4 h-4 text-white" />
                         </div>
-                        {labels[index] || `Facebook Page ${index + 1}`}
                       </a>
                     );
                   })}
@@ -82,7 +81,7 @@ export default function Footer() {
                           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                       </div>
-                      AR Rahman Fashion YouTube Channel
+                      
                     </a>
                   )}
                 </div>
@@ -149,14 +148,14 @@ export default function Footer() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
-                  {settings?.contactAndSocial?.email || 'AR.arfashion@gmail.com'}
+                  {settings?.contactAndSocial?.email || ''}
                 </a>
               </li>
               <li>
                 <a
                   href={(() => {
                     const whatsappLink = settings?.contactAndSocial?.whatsappLink?.[0];
-                    const phone = settings?.contactAndSocial?.phone || '+8801701234567';
+                    const phone = settings?.contactAndSocial?.phone || '';
                     
                     // If whatsappLink exists and is a proper URL, use it
                     if (whatsappLink && (whatsappLink.startsWith('https://wa.me/') || whatsappLink.startsWith('https://api.whatsapp.com/'))) {
@@ -187,7 +186,7 @@ export default function Footer() {
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
                   <span className="text-gray-500">
-                    {settings?.contactAndSocial?.address || 'Mirpur, Dhaka, Bangladesh'}
+                    {settings?.contactAndSocial?.address || ''}
                   </span>
                 </div>
               </li>
@@ -211,12 +210,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://AR-fashion-admin-panel.app/auth/login"
+                  href="https://royal-admin-hqp1.vercel.app/auth/login"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-black transition-colors"
                 >
-                  AR Rahman FashionAdmin
+                   Royal Bag House Admin
                 </a>
               </li>
               
@@ -246,7 +245,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12  pt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-500 mb-4 ">
-            © {new Date().getFullYear()} AR Rahman FashionLtd. All rights reserved - Design &amp; Developed by <span className="text-md">WebQ Team</span> 
+            © {new Date().getFullYear()}  Royal Bag House Ltd. All rights reserved - Design &amp; Developed by <span className="text-md">WebQ Team</span> 
           </p>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default function CheckoutActions({
         <Button
           type="button"
           onClick={onNextStepOrSubmit}
-          className="bg-primary hover:bg-gray-300 h-10 px-5 text-sm"
+          className="bg-primary hover:bg-gray-300 h-10 px-5 text-sm text-white"
           disabled={createOrderLoading || cartItemsLength === 0}
         >
           {createOrderLoading ? `Creating Order...` : nextCtaText}

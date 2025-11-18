@@ -1,10 +1,10 @@
-# 🎨 AR Rahman Fashion Color Palette Implementation (v2 – Based on #000000)
+# 🎨  Royal Bag House Color Palette Implementation (v2 – Based on #2E2E2E)
 
 ## Color Palette Overview
 
 | Color Name | Hex Code | Usage | Tailwind Classes |
 |------------|----------|-------|------------------|
-| **Primary (Bright Gold)** | `#000000` | Main brand color for buttons, highlights, titles | `bg-primary`, `text-primary`, `border-primary` |
+| **Primary (Bright Gold)** | `#2E2E2E` | Main brand color for buttons, highlights, titles | `bg-primary`, `text-primary`, `border-primary` |
 | **Primary Hover (Deep Gold)** | `#E6BD2E` | Hover state for gold elements | `hover:bg-primary-hover`, `bg-primary-hover` |
 | **Secondary (Charcoal)** | `#2E2E2E` | Text, icons, headers (softer than pure black) | `bg-secondary`, `text-secondary`, `border-secondary` |
 | **Accent (Pure White)** | `#FFFFFF` | Clean backgrounds and content areas | `bg-accent`, `text-accent`, `border-accent` |
@@ -43,7 +43,7 @@
 theme: {
   extend: {
     colors: {
-      primary: '#000000',
+      primary: '#2E2E2E',
       'primary-hover': '#E6BD2E',
       secondary: '#2E2E2E',
       accent: '#FFFFFF',
@@ -95,16 +95,16 @@ theme: {
 
 | Combination | Use Case |
 |-------------|----------|
-| Gold (#000000) + Charcoal (#1E1E1E) | Premium contrast for buttons, headings |
+| Gold (#2E2E2E) + Charcoal (#1E1E1E) | Premium contrast for buttons, headings |
 | Charcoal (#1E1E1E) + Soft White (#FAFAFA) | Readable and elegant text sections |
-| Gold (#000000) + Royal Blue (#3B5BA9) | Limited accent usage for strong CTAs |
+| Gold (#2E2E2E) + Royal Blue (#3B5BA9) | Limited accent usage for strong CTAs |
 | Neutral Gray (#E4E4E4) + Charcoal (#1E1E1E) | Minimal card and border combinations |
 
 ### Hover / Focus States
 
 | State | Base | Hover |
 |-------|------|-------|
-| Primary Button | #000000 | #E0B82E |
+| Primary Button | #2E2E2E | #E0B82E |
 | Secondary Button | #1E1E1E | #3A3A3A |
 | Highlight Button | #3B5BA9 | #314C8D |
 | Neutral | #E4E4E4 | #CFCFCF |
@@ -112,7 +112,7 @@ theme: {
 ## Accessibility Notes
 
 ✅ Contrast ratios are optimized for readability on both light and dark backgrounds  
-✅ Gold (#000000) provides strong brand recognition without straining the eyes  
+✅ Gold (#2E2E2E) provides strong brand recognition without straining the eyes  
 ✅ All hover and focus states maintain AA compliance
 
 ## File Locations
@@ -138,7 +138,7 @@ When updating existing components:
 
 ```css
 :root {
-  --primary: #000000;
+  --primary: #2E2E2E;
   --primary-hover: #E6BD2E;
   --secondary: #2E2E2E;
   --accent: #FFFFFF;
@@ -154,7 +154,7 @@ When updating existing components:
 
 | Purpose | Color | Hex |
 |---------|-------|-----|
-| 🌞 Primary Bright Gold | ![#000000](https://via.placeholder.com/20/000000/000000?text=+) | #000000 |
+| 🌞 Primary Bright Gold | ![#2E2E2E](https://via.placeholder.com/20/000000/000000?text=+) | #2E2E2E |
 | 🟡 Primary Hover Deep Gold | ![#E6BD2E](https://via.placeholder.com/20/E6BD2E/000000?text=+) | #E6BD2E |
 | 🌑 Secondary Charcoal | ![#2E2E2E](https://via.placeholder.com/20/2E2E2E/000000?text=+) | #2E2E2E |
 | ⚪ Accent Pure White | ![#FFFFFF](https://via.placeholder.com/20/FFFFFF/000000?text=+) | #FFFFFF |

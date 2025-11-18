@@ -46,7 +46,7 @@ export default function CategorySidebar() {
   return (
     <aside className="hidden md:block md:col-span-3 lg:col-span-2">
       <div className="border rounded-lg overflow-hidden h-44 sm:h-56 md:h-64 lg:h-80 xl:h-96">
-        <div className="px-3 bg-[#000000] py-2 font-medium border-b text-[#2e2e2e]">Categories</div>
+        <div className="px-3 bg-[#2E2E2E] py-2 font-medium border-b text-white">Categories</div>
         <div className="overflow-y-auto h-full">
           <ul className="divide-y">
             {cats.map((c) => (

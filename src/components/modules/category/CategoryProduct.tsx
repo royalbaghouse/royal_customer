@@ -58,7 +58,7 @@ export default function CategoryProduct({ data = [], title = "New Products" }: P
                   variant={activeCategory === cat ? "default" : "outline"}
                   className={`rounded-full px-4 text-xs md:px-5 md:text-sm ${
                     activeCategory === cat
-                      ? "bg-primary text-[#2e2e2e] hover:bg-primary/60"
+                      ? "bg-primary text-white hover:bg-primary/60"
                       : "border bg-transparent text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -71,7 +71,7 @@ export default function CategoryProduct({ data = [], title = "New Products" }: P
                 variant={activeCategory === cat ? "default" : "outline"}
                 className={`rounded-full px-4 text-xs md:px-5 md:text-sm ${
                   activeCategory === cat
-                    ? "bg-primary text-[#2e2e2e] hover:bg-primary/60"
+                    ? "bg-primary text-white hover:bg-primary/60"
                     : "border bg-transparent text-gray-700 hover:bg-gray-100"
                 }`}
                 onClick={() => setActiveCategory(cat)}
@@ -115,12 +115,12 @@ export default function CategoryProduct({ data = [], title = "New Products" }: P
                   <div className="flex items-center gap-2">
                     {p.salePrice ? (
                       <>
-                        <span className="text-sm font-bold text-[#000000] md:text-lg">
+                        <span className="text-sm font-bold text-[#2E2E2E] md:text-lg">
                           {formatBDT(p.price)}
                         </span>
                       </>
                     ) : (
-                      <span className="text-sm font-bold text-[#000000] md:text-lg">
+                      <span className="text-sm font-bold text-[#2E2E2E] md:text-lg">
                         {formatBDT(p.price)}
                       </span>
                     )}
@@ -150,7 +150,7 @@ export default function CategoryProduct({ data = [], title = "New Products" }: P
           <Link href="/product-listing">
             <Button
               variant="outline"
-              className="flex items-center gap-2 rounded-[12px] border border-gray-300 px-6 py-3 text-sm font-medium transition-colors bg-primary hover:bg-gray-100 md:text-base"
+              className="flex items-center gap-2 rounded-[12px] border border-gray-300 px-6 py-3 text-sm font-medium transition-colors bg-primary text-white hover:bg-gray-100 md:text-base"
             >
               View All
               <ChevronRight className="h-4 w-4" />

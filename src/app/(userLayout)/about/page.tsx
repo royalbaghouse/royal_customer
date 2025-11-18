@@ -17,9 +17,9 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "About — AR Rahman Fashion",
+  title: "About —  Royal Bag House ",
   description:
-    "Learn about AR Rahman Fashion— your premier fashion destination offering trendy, quality clothing for every style and occasion.",
+    "Learn about  Royal Bag House — your premier fashion destination offering trendy, quality clothing for every style and occasion.",
 };
 
 function Stat({
@@ -79,13 +79,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
               <p className="text-xs tracking-widest text-primary font-semibold">
-                ABOUT AR Rahman Fashion
+                ABOUT  Royal Bag House 
               </p>
               <h1 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-secondary">
                 Fashion that fits your lifestyle.
               </h1>
               <p className="mt-3 text-gray-600 max-w-2xl">
-                AR Rahman Fashionbrings you the latest in fashion trends and timeless classics. From casual everyday wear to elegant formal pieces—discover quality clothing that expresses your unique style.
+                 Royal Bag House brings you the latest in fashion trends and timeless classics. From casual everyday wear to elegant formal pieces—discover quality clothing that expresses your unique style.
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -103,7 +103,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-white">
               <Image
                 src="/about1.jpg"
-                alt="Fashion collection from AR Rahman Fashion"
+                alt="Fashion collection from  Royal Bag House "
                 fill
                 className="object-contain"
                 sizes="(max-width: 1024px) 100vw, 600px"
@@ -148,14 +148,14 @@ export default function AboutPage() {
               Our Story
             </h2>
             <p className="mt-3 text-gray-600">
-              AR Rahman Fashionstarted with a simple belief:{" "}
+               Royal Bag House started with a simple belief:{" "}
               <span className="font-semibold text-secondary">
                 &ldquo;Fashion should be accessible, stylish, and sustainable.&rdquo;
               </span>{" "}
               From our first boutique to today&rsquo;s online platform, we&rsquo;ve been committed to curating quality clothing that empowers people to express their individuality.
             </p>
             <p className="mt-3 text-gray-600">
-              Today, AR Rahman Fashionoffers everything from casual everyday essentials to statement pieces for special occasions. We carefully select each item for quality, style, and value, bringing you fashion that fits your lifestyle and budget.
+              Today,  Royal Bag House offers everything from casual everyday essentials to statement pieces for special occasions. We carefully select each item for quality, style, and value, bringing you fashion that fits your lifestyle and budget.
             </p>
           </div>
 
@@ -163,7 +163,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-white">
               <Image
                 src="/about1.jpg"
-                alt="AR Rahman Fashionfashion collection and styling"
+                alt=" Royal Bag House fashion collection and styling"
                 fill
                 className="object-contain"
                 sizes="(max-width: 1024px) 100vw, 600px"
@@ -212,19 +212,19 @@ export default function AboutPage() {
         </h2>
         <ul className="mt-4 space-y-4">
           <li className="flex gap-3">
-            <div className="w-2 h-2 mt-2 rounded-full bg-[#000000]" />
+            <div className="w-2 h-2 mt-2 rounded-full bg-[#2E2E2E]" />
             <p className="text-gray-700">
               <b>2020:</b> Started with a single street cart serving fresh beverages and snacks.
             </p>
           </li>
           <li className="flex gap-3">
-            <div className="w-2 h-2 mt-2 rounded-full bg-[#000000]" />
+            <div className="w-2 h-2 mt-2 rounded-full bg-[#2E2E2E]" />
             <p className="text-gray-700">
               <b>2022:</b> Expanded to multiple locations and launched delivery service.
             </p>
           </li>
           <li className="flex gap-3">
-            <div className="w-2 h-2 mt-2 rounded-full bg-[#000000]" />
+            <div className="w-2 h-2 mt-2 rounded-full bg-[#2E2E2E]" />
             <p className="text-gray-700">
               <b>2024:</b> Online ordering platform and expanded menu with specialty items.
             </p>

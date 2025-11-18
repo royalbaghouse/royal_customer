@@ -77,7 +77,7 @@ export default function CategoryRail() {
       <div ref={railRef} className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
         <button
           onClick={() => setCategory(undefined)}
-          className={`whitespace-nowrap px-3 py-2 rounded-full border border-neutral ${current ? "bg-accent text-secondary hover:bg-section" : "bg-secondary text-accent"}`}
+          className={`whitespace-nowrap px-3 py-2 rounded-full border border-neutral ${current ? "bg-accent text-secondary hover:bg-section" : "bg-secondary text-white"}`}
           aria-pressed={!current}
         >
           All
@@ -89,7 +89,7 @@ export default function CategoryRail() {
             onClick={() => setCategory(c)}
             className={`whitespace-nowrap px-3 py-2 rounded-full border border-neutral transition ${
               current && current === (c.slug ?? c.id)
-                ? "bg-primary text-secondary"
+                ? "bg-primary text-white"
                 : "bg-accent text-secondary hover:bg-section"
             }`}
             aria-pressed={current === (c.slug ?? c.id)}

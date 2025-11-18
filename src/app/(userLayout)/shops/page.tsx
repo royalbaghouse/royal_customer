@@ -87,7 +87,7 @@ export default function ShopsPage() {
               </div>
 
               {/* Description */}
-              <p className="mt-2 text-xs text-[#000000] line-clamp-2">
+              <p className="mt-2 text-xs text-[#2E2E2E] line-clamp-2">
                 {shop?.basicInfo?.description ?? "No description available"}
               </p>
 

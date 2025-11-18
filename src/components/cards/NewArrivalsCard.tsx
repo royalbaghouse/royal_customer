@@ -53,7 +53,7 @@ const NewArrivalsCard = ({
           {/* btn */}
           <Link
             href={`/product-details/${id}`} 
-            className="bg-secondary text-accent md:bg-neutral md:text-secondary
+            className="bg-secondary text-white md:bg-neutral md:text-secondary
               p-0.5 md:p-2 rounded-full shadow"
           >
             <ArrowUpRight className="w-4 h-4 lg:w-6 lg:h-6" />

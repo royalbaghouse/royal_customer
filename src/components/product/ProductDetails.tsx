@@ -83,7 +83,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
   const staticColors = useMemo<ColorOption[]>(() => [
     // Basic Colors
-    { name: 'Black', hex: '#000000' },
+    { name: 'Black', hex: '#2E2E2E' },
     { name: 'White', hex: '#FFFFFF' },
     { name: 'Gray', hex: '#808080' },
     { name: 'Grey', hex: '#808080' },
@@ -668,7 +668,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                     className={cn(
                       'px-4 py-2 border rounded-lg text-sm font-medium transition-all',
                       s === size
-                        ? 'border-primary bg-primary text-secondary'
+                        ? 'border-primary bg-primary text-white'
                         : 'border-gray-300 hover:border-gray-400'
                     )}
                   >
@@ -707,7 +707,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               className={clsx('w-full py-6 text-lg font-semibold transition-all', {
                 'bg-gray-500 hover:bg-gray-600': productView.specifications.quantity === 0,
                 'bg-green-600 hover:bg-green-600 cursor-default': isAddedToCart,
-                'bg-primary hover:bg-primary/90 text-secondary': productView.specifications.quantity > 0 && !isAddedToCart,
+                'bg-primary hover:bg-primary/90 text-white': productView.specifications.quantity > 0 && !isAddedToCart,
               })}
             >
               <ShoppingCart className="w-5 h-5 mr-2" />

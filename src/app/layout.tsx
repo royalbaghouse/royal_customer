@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AR Rahman Fashion",
+  title: " Royal Bag House ",
   description: "Vendor management website",
 };
 

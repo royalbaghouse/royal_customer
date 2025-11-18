@@ -74,7 +74,7 @@ export default function BestSelling({ data = [], title = "Best Selling" }: Props
                 variant={activeCategory === cat ? "default" : "outline"}
                 className={`rounded-full px-4 text-xs md:px-5 md:text-sm ${
                   activeCategory === cat
-                    ? "bg-primary text-[#2e2e2e] hover:bg-black"
+                    ? "bg-primary text-white hover:bg-black"
                     : "border bg-transparent text-gray-700 hover:bg-gray-100"
                 }`}
                 onClick={() => setActiveCategory(cat)}
@@ -98,7 +98,7 @@ export default function BestSelling({ data = [], title = "Best Selling" }: Props
                 <CardContent className="flex flex-col p-4">
                   {/* Discount badge */}
                   {badge ? (
-                    <span className="absolute right-3 top-3 z-10 rounded-md bg-[#000000] px-2 py-0.5 text-[11px] font-semibold text-[#2e2e2e]">
+                    <span className="absolute right-3 top-3 z-10 rounded-md bg-[#2E2E2E] px-2 py-0.5 text-[11px] font-semibold text-white">
                       {badge}%
                     </span>
                   ) : null}
@@ -126,12 +126,12 @@ export default function BestSelling({ data = [], title = "Best Selling" }: Props
                     <div className="flex items-center gap-2">
                       {p.salePrice ? (
                         <>
-                          <span className="text-sm font-bold text-[#000000] md:text-lg">
+                          <span className="text-sm font-bold text-[#2E2E2E] md:text-lg">
                             {formatBDT(p.salePrice)}
                           </span>
                         </>
                       ) : (
-                        <span className="text-sm font-bold text-[#000000] md:text-lg">
+                        <span className="text-sm font-bold text-[#2E2E2E] md:text-lg">
                           {formatBDT(p.price)}
                         </span>
                       )}

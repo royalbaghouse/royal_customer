@@ -50,7 +50,7 @@ export default function MobileBottomNav() {
           {items.map((it) =>
             it.href ? (
               <li key={it.key}>
-                <Link href={it.href} className={`flex font=bold flex-col items-center justify-center py-2 ${it.key === 'home' ? 'text-primary' : 'text-secondary'}`}>
+                <Link href={it.href} className={`flex font=bold flex-col items-center justify-center py-2 ${it.key === 'home' ? 'text-primary' : 'text-black'}`}>
                   {it.icon}
                   <span className="text-[11px] mt-1">{it.label}</span>
                 </Link>
@@ -60,7 +60,7 @@ export default function MobileBottomNav() {
                 <button
                   type="button"
                   onClick={it.onClick}
-                  className="w-full flex flex-col items-center justify-center py-2 text-secondary"
+                  className="w-full flex flex-col items-center justify-center py-2 text-black"
                 >
                   {it.icon}
                   <span className="text-[11px] mt-1">{it.label}</span>
@@ -86,7 +86,7 @@ export default function MobileBottomNav() {
               <h3 className="text-lg font-semibold">{drawerType === 'categories' ? 'Categories' : 'Menu'}</h3>
               <button 
                 onClick={closeDrawer}
-                className="p-1 rounded-full hover:bg-neutral"
+                className="p-1 rounded-full hover:bg-gray-200"
               >
                 <X size={20} />
               </button>
@@ -101,7 +101,7 @@ export default function MobileBottomNav() {
                       <Link 
                         key={String(cat._id || cat.id || index)}
                         href={`/category?slug=${encodeURIComponent(String(cat.slug || ''))}`} 
-                        className="block p-3 hover:bg-neutral rounded" 
+                        className="block p-3 hover:bg-gray-100 rounded" 
                         onClick={closeDrawer}
                       >
                         {String(cat.name || 'Category')}
@@ -114,25 +114,25 @@ export default function MobileBottomNav() {
               ) : (
                 // Menu content
                 <>
-                  <Link href="/product-listing" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/product-listing" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     All Products
                   </Link>
-                  <Link href="/deals" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/deals" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     Today&apos;s Deals
                   </Link>
-                  <Link href="/discounts" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/discounts" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     Discounts
                   </Link>
-                  <Link href="/more" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/more" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     Featured
                   </Link>
-                  <Link href="/reviews" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/reviews" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     Top Reviewed
                   </Link>
-                  <Link href="/about" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/about" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     About Us
                   </Link>
-                  <Link href="/contact-us" className="block p-3 hover:bg-neutral rounded" onClick={closeDrawer}>
+                  <Link href="/contact-us" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
                     Contact
                   </Link>
                 </>
