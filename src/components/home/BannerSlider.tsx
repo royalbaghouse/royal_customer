@@ -1,13 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useGetSettingsQuery } from "@/redux/featured/settings/settingsApi";
-import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import type { SerializedError } from "@reduxjs/toolkit";
-
-// Type-safe slide interface
 type Slide = {
   _id: string;
   imageUrl: string;
@@ -15,51 +10,45 @@ type Slide = {
   href?: string;
 };
 
-// Settings slider image type
 type SliderImage = {
   image: string;
   url: string;
 };
 
-const FALLBACK: Slide[] = [
-  { 
-    _id: "f1", 
-    imageUrl: "/about1.jpg",
-    alt: " Royal Bag House Banner", 
-    href: "/products/footwear" 
-  },
-];
-
+let cachedSlides: Slide[] | null = null;
 
 export default function BannerSlider() {
-  // Fetch settings from backend
-  const { data: settings, isLoading, isError, error } = useGetSettingsQuery();
-
+  const [slides, setSlides] = useState<Slide[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
-  const [failedApiImages, setFailedApiImages] = useState<Set<string>>(new Set());
-  
-  // Show API images if available, otherwise fallback
-  const slides: Slide[] = useMemo(() => {
-    const sliderImages = settings?.sliderImages;
+  useEffect(() => {
+    if (cachedSlides) {
+      setSlides(cachedSlides);
+      setIsLoading(false);
+      return;
+    }
     
-    if (sliderImages && sliderImages.length > 0) {
-      return sliderImages
-        .filter((item: SliderImage) => {
-          return item.image && !failedApiImages.has(item.image);
-        })
-        .map((item: SliderImage, index: number) => {
-          const clickUrl = item.url && item.url.trim() !== '' ? item.url : undefined;
-          
-          return {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API}/settings`)
+      .then(res => res.json())
+      .then(data => {
+        const sliderImages = data?.data?.sliderImages || [];
+        const newSlides = sliderImages
+          .filter((item: SliderImage) => item.image)
+          .map((item: SliderImage, index: number) => ({
             _id: `slide-${index}`,
             imageUrl: item.image,
             alt: `Banner ${index + 1}`,
-            href: clickUrl
-          };
-        });
-    }
-    return FALLBACK;
-  }, [settings, failedApiImages]);
+            href: item.url && item.url.trim() !== '' ? item.url : undefined
+          }));
+        
+        cachedSlides = newSlides;
+        setSlides(newSlides);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -67,8 +56,6 @@ export default function BannerSlider() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [prefersReducedMotion, setPRM] = useState(false);
 
-
-  // Handle prefers-reduced-motion
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -91,7 +78,6 @@ export default function BannerSlider() {
     };
   }, []);
 
-  // Auto-rotate slides with flip animation
   useEffect(() => {
     if (prefersReducedMotion || paused || slides.length <= 1) return;
     if (timerRef.current) clearInterval(timerRef.current);
@@ -101,7 +87,7 @@ export default function BannerSlider() {
       setTimeout(() => {
         setIdx((p) => (p + 1) % slides.length);
         setAnimationState("in");
-      }, 500); // Match CSS animation duration
+      }, 500);
     }, 2000);
 
     return () => {
@@ -109,7 +95,6 @@ export default function BannerSlider() {
     };
   }, [prefersReducedMotion, paused, slides.length]);
 
-  // Pause on blur, resume on focus
   useEffect(() => {
     const onBlur = () => setPaused(true);
     const onFocus = () => setPaused(false);
@@ -121,7 +106,9 @@ export default function BannerSlider() {
     };
   }, []);
 
-  const err = error as FetchBaseQueryError | SerializedError | undefined;
+  if (!isLoading && slides.length === 0) {
+    return null;
+  }
 
   return (
     <div
@@ -173,12 +160,11 @@ export default function BannerSlider() {
             ? "opacity-100"
             : "opacity-0";
 
-        // Skip rendering if imageUrl is invalid
-        if (!s.imageUrl || typeof s.imageUrl !== 'string' || s.imageUrl === '"' || s.imageUrl.includes('"')) {
+        if (!s.imageUrl || typeof s.imageUrl !== 'string') {
           return null;
         }
 
-        const imgEl = (
+        return (
           <Image
             key={s._id}
             src={s.imageUrl}
@@ -188,12 +174,6 @@ export default function BannerSlider() {
             className={`object-cover absolute inset-0 transition-opacity duration-500 ${animationClass} ${s.href && isActive ? 'cursor-pointer' : ''} ${!isActive ? 'pointer-events-none' : ''}`}
             sizes="(min-width:1280px) 1000px, 100vw"
             unoptimized
-            onError={() => {
-              // Mark API image as failed, will trigger fallback
-              if (settings?.sliderImages) {
-                setFailedApiImages(prev => new Set(prev).add(s.imageUrl));
-              }
-            }}
             onClick={() => {
               if (isActive && s.href) {
                 window.open(s.href, '_blank', 'noopener,noreferrer');
@@ -201,8 +181,6 @@ export default function BannerSlider() {
             }}
           />
         );
-
-        return imgEl;
       })}
 
       <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
@@ -221,12 +199,6 @@ export default function BannerSlider() {
           />
         ))}
       </div>
-
-      {isError && (
-        <span className="sr-only">
-          Failed to load slides. {(err && "status" in err && err.status) || ""}
-        </span>
-      )}
     </div>
   );
 }

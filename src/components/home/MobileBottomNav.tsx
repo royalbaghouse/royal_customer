@@ -2,7 +2,22 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { Home, Layers, ShoppingCart, Menu, X } from "lucide-react";
+import { 
+  Home, 
+  Layers, 
+  ShoppingCart, 
+  Menu, 
+  X, 
+  Grid3X3,
+  LayoutDashboard,
+  User,
+  Package,
+  Heart,
+  Info,
+  Phone,
+  Shield,
+  RotateCcw
+} from "lucide-react";
 import { ReactNode } from "react";
 import { useGetAllCategoryQuery } from "@/redux/featured/category/categoryApi";
 
@@ -114,26 +129,45 @@ export default function MobileBottomNav() {
               ) : (
                 // Menu content
                 <>
-                  <Link href="/product-listing" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    All Products
+                  <Link href="/" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Home size={20} />
+                    <span>Home</span>
                   </Link>
-                  <Link href="/deals" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    Today&apos;s Deals
+                  <Link href="/product-listing" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Grid3X3 size={20} />
+                    <span>All Products</span>
                   </Link>
-                  <Link href="/discounts" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    Discounts
+                  <Link href="/dashboard" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <LayoutDashboard size={20} />
+                    <span>Dashboard</span>
                   </Link>
-                  <Link href="/more" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    Featured
+                  <Link href="/dashboard/profile" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <User size={20} />
+                    <span>My Profile</span>
                   </Link>
-                  <Link href="/reviews" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    Top Reviewed
+                  <Link href="/tracking-order" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Package size={20} />
+                    <span>Track Order</span>
                   </Link>
-                  <Link href="/about" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    About Us
+                  <Link href="/wishlist" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Heart size={20} />
+                    <span>Wishlist</span>
                   </Link>
-                  <Link href="/contact-us" className="block p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
-                    Contact
+                  <Link href="/about" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Info size={20} />
+                    <span>About Us</span>
+                  </Link>
+                  <Link href="/contact-us" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Phone size={20} />
+                    <span>Contact Us</span>
+                  </Link>
+                  <Link href="/privacy-policy" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <Shield size={20} />
+                    <span>Privacy Policy</span>
+                  </Link>
+                  <Link href="/return-policy" className="flex items-center gap-3 p-3 hover:bg-gray-100 rounded" onClick={closeDrawer}>
+                    <RotateCcw size={20} />
+                    <span>Return & Refund</span>
                   </Link>
                 </>
               )}

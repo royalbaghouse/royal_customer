@@ -21,7 +21,7 @@ export default function CheckoutHeader({ currentStep }: CheckoutHeaderProps) {
           type="button"
           variant="outline"
           onClick={() => router.push('/product-listing')}
-          className="absolute left-0 hidden lg:flex items-center text-gray-600 hover:text-gray-800 border-gray-300"
+          className="absolute left-0 hidden lg:flex items-center text-gray-600 hover:text-white border-gray-300"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Shopping

@@ -23,19 +23,19 @@ export default function ClientHome() {
   //   isError: discountError,
   //  } = useGetDiscountedProductsQuery()
 
-   const {
-  data: topReviewed,
-  isLoading: topLoading,
-  isError: topError,
-} = useGetTopReviewedProductsQuery();
-  
- return (
+  const {
+    data: topReviewed,
+    isLoading: topLoading,
+    isError: topError,
+  } = useGetTopReviewedProductsQuery();
+
+  return (
     <main className="bg-white w-full">
       <HomepagePopup />
       <MainMenu />
 
       {/* Hero */}
-      <section className="container mx-auto w-full px-3 sm:px-4 lg:px-6 mt-4">
+      <section className="container mx-auto w-full px-3 sm:px-4 lg:px-6 lg:mt-4">
         <div className="grid grid-cols-12 gap-3">
           <div className="col-span-12 md:col-span-3 lg:col-span-2">
             <CategorySidebar />
@@ -51,13 +51,11 @@ export default function ClientHome() {
 
       {/* Category / category rails */}
       <section className="mt-4">
-        
         <CategoryRail />
         <div className="mt-3">
           <CategoryProductCards />
         </div>
       </section>
-
 
       {/* Customer dont want this section */}
       {/* FEATURED / MORE
@@ -96,26 +94,29 @@ export default function ClientHome() {
           right={{ label: "More...", href: "/deals" }}
         />
         <div className="mt-3">
-          <ProductSixGrid title="Today's Deal" useQuery={useGetTodaysDealsQuery} />
+          <ProductSixGrid
+            title="Today's Deal"
+            useQuery={useGetTodaysDealsQuery}
+          />
         </div>
       </section>
 
       {/* TOP REVIEWED */}
-     <section className="mt-6">
-  <FeatureMoreBar
-    left={{ label: "TOP REVIEWED", href: "/reviews" }}
-    right={{ label: "More...", href: "/reviews" }}
-  />
-  <div className="mt-3">
-    <TopReviewed
-      data={topReviewed}
-      loading={topLoading}
-      error={topError}
-      title="Top Reviewed Products"
-      limit={6}
-    />
-  </div>
-</section>
+      <section className="mt-6">
+        <FeatureMoreBar
+          left={{ label: "TOP REVIEWED", href: "/reviews" }}
+          right={{ label: "More...", href: "/reviews" }}
+        />
+        <div className="mt-3">
+          <TopReviewed
+            data={topReviewed}
+            loading={topLoading}
+            error={topError}
+            title="Top Reviewed Products"
+            limit={6}
+          />
+        </div>
+      </section>
 
       <MobileBottomNav />
     </main>

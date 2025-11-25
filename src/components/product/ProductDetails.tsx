@@ -17,6 +17,7 @@ import { useWishlist } from '@/hooks/useWishlist';
 import toast from 'react-hot-toast';
 import clsx from 'clsx';
 import { IProduct } from '@/types/product';
+import { log } from 'console';
 
 // ---------- helpers ----------
 const normalizeText = (v: unknown): string =>
@@ -79,6 +80,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const router = useRouter();
 
   const { data: productsData } = useGetAllProductsQuery();
+ console.log(productsData)
   const cartItems = useAppSelector(selectCartItems);
 
   const staticColors = useMemo<ColorOption[]>(() => [
@@ -538,11 +540,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </div>
           )}
 
-          {/* Product Description */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <h3 className="font-semibold text-gray-900 text-2xl mb-2">Product Description</h3>
-            <p className="text-gray-600 text-sm leading-relaxed">{productView.description}</p>
-          </div>
+
         </div>
 
         {/* RIGHT: details */}
@@ -839,31 +837,17 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               </div>
             </div>
 
-            {/* Features & Benefits + Care Instructions */}
+            {/* Product Description + Care Instructions */}
             <div className="space-y-5">
               <div>
-                <h3 className="font-semibold mb-3">Features & Benefits</h3>
-                <ul className="space-y-3 text-sm">
-                  <li>
-                    <span className="text-black">●</span> <b>High Quality</b>
-                    <div className="text-gray-500">Made with premium materials for lasting durability</div>
-                  </li>
-                  <li>
-                    <span className="text-black">●</span> <b>Authentic Product</b>
-                    <div className="text-gray-500">Genuine product with quality assurance</div>
-                  </li>
-                  <li>
-                    <span className="text-black">●</span> <b>Fast Delivery</b>
-                    <div className="text-gray-500">Quick and reliable shipping to your doorstep</div>
-                  </li>
-                  <li>
-                    <span className="text-black">●</span> <b>Customer Approved</b>
-                    <div className="text-gray-500">Rated {productView.rating}/5 stars by verified customers</div>
-                  </li>
-                </ul>
+                <h3 className="font-semibold mb-3">Product Description</h3>
+                <div 
+                  className="text-sm text-gray-600 leading-relaxed prose prose-sm max-w-none"
+                  dangerouslySetInnerHTML={{ __html: productView.description }}
+                />
               </div>
 
-              <div>
+              {/* <div>
                 <h3 className="font-semibold mb-3">Care Instructions</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>Handle with care to maintain quality</li>
@@ -872,7 +856,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   <li>Keep away from extreme temperatures</li>
                   <li>Regular maintenance recommended</li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </CardContent>
         </Card>

@@ -1,34 +1,20 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  Menu,
   Phone,
   Search,
   Headphones,
   ShoppingCart,
   LogOut,
   User as UserIcon,
-  ChevronDown,
-  ChevronRight,
   Heart,
   X,
-  Home,
-  Info,
-  Package,
-  Shield,
-  RotateCcw,
-  Grid3X3,
-  LayoutDashboard,
-  User,
 } from "lucide-react";
 
-import {
-  useGetAllCategoryQuery,
-  type RemoteCategory,
-} from "@/redux/featured/category/categoryApi";
+
 import { useGetSettingsQuery } from "@/redux/featured/settings/settingsApi";
 import Image from "next/image";
 
@@ -43,26 +29,11 @@ import { selectCartItems } from "@/redux/featured/cart/cartSlice";
 import { useWishlist } from "@/hooks/useWishlist";
 import toast from "react-hot-toast";
 
-// ----- safe helpers -----
-function isRecord(v: unknown): v is Record<string, unknown> {
-  return !!v && typeof v === "object";
-}
-function getProp(o: unknown, k: string): unknown {
-  return isRecord(o) && k in o ? (o as Record<string, unknown>)[k] : undefined;
-}
-function getStr(o: unknown, k: string): string | undefined {
-  const v = getProp(o, k);
-  return typeof v === "string" ? v : undefined;
-}
+
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
-
   const [isClient, setIsClient] = useState(false);
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
-    new Set()
-  );
   const { data: settings } = useGetSettingsQuery();
 
   const router = useRouter();
@@ -79,43 +50,6 @@ export default function Navbar() {
 
   const cartItems = useAppSelector(selectCartItems);
   const { wishlist } = useWishlist();
-  // Fetch categories from API
-  const { data } = useGetAllCategoryQuery();
-
-  // Transform categories for UI
-  const categories = useMemo(() => {
-    const raw: RemoteCategory[] = Array.isArray(data) ? data : [];
-
-    return raw.map((c) => {
-      const id = String((c._id ?? c.id ?? c.slug ?? "") || "");
-      const slug = typeof c.slug === "string" ? c.slug : undefined;
-      const label = String(
-        getStr(c, "name") ?? getStr(c, "label") ?? "Category"
-      );
-      const subCategories = Array.isArray(c.subCategories)
-        ? c.subCategories
-        : Array.isArray(c.children)
-        ? c.children.map(
-            (child) =>
-              getStr(child, "name") ?? getStr(child, "label") ?? "Subcategory"
-          )
-        : [];
-
-      return { id, slug, label, subCategories };
-    });
-  }, [data]);
-
-  const toggleCategory = (categoryId: string) => {
-    setExpandedCategories((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(categoryId)) {
-        newSet.delete(categoryId);
-      } else {
-        newSet.add(categoryId);
-      }
-      return newSet;
-    });
-  };
 
   const handleLogout = async () => {
     try {
@@ -139,208 +73,14 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 z-40 lg:hidden"
-          onClick={() => setIsMenuOpen(false)}
-        />
-      )}
 
-      {/* Mobile Slide Menu */}
-      <div
-        className={`fixed top-0 left-0 h-full min-w-72 max-w-72 bg-white/98 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center justify-between px-6 py-3 border-b border-gray-200">
-            <span className="font-bold text-xl text-primary">Menu</span>
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label="Close menu"
-            >
-              <X size={20} />
-            </button>
-          </div>
-
-          {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto p-4">
-            <nav className="space-y-1">
-              {/* Home Link */}
-              <Link
-                href="/"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Home size={20} />
-                <span>Home</span>
-              </Link>
-
-              {/* All Products Link */}
-              <Link
-                href="/product-listing"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Grid3X3 size={20} />
-                <span>All Products</span>
-              </Link>
-
-              {/* Categories Section */}
-              <div className="space-y-1">
-                {categories.map((category) => (
-                  <div key={category.id}>
-                    <div className="flex items-center justify-between py-2 px-3 hover:bg-gray-100 rounded transition-colors">
-                      <Link
-                        href={`/category?slug=${encodeURIComponent(
-                          category.slug ?? category.id
-                        )}`}
-                        className="flex-1 text-gray-700"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {category.label}
-                      </Link>
-                      {category.subCategories &&
-                        category.subCategories.length > 0 && (
-                          <button
-                            onClick={() => toggleCategory(category.id)}
-                            className="p-1 hover:bg-gray-200 rounded"
-                            aria-label={`Toggle ${category.label} subcategories`}
-                          >
-                            {expandedCategories.has(category.id) ? (
-                              <ChevronDown
-                                size={16}
-                                className="text-gray-600"
-                              />
-                            ) : (
-                              <ChevronRight
-                                size={16}
-                                className="text-gray-600"
-                              />
-                            )}
-                          </button>
-                        )}
-                    </div>
-                    {category.subCategories &&
-                      category.subCategories.length > 0 &&
-                      expandedCategories.has(category.id) && (
-                        <div className="ml-4 space-y-1">
-                          {category.subCategories.map((subCat, index) => (
-                            <Link
-                              key={`${subCat}-${index}`}
-                              href={`/category?slug=${encodeURIComponent(
-                                category.slug ?? category.id
-                              )}&sub=${encodeURIComponent(subCat)}`}
-                              className="block py-1.5 px-3 text-sm hover:bg-gray-100 rounded transition-colors text-gray-600"
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              {subCat}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-gray-200 my-4" />
-
-
-              
-              {/* Dashboard Link - Only show if logged in */}
-              {isLoggedIn && (
-                <Link
-                  href="/dashboard"
-                  className="flex items-center gap-3 p-3 bg-primary rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <LayoutDashboard size={20} />
-                  <span>Dashboard</span>
-                </Link>
-              )}
-
-              {/* My Profile Link - Only show if logged in */}
-              {isLoggedIn && (
-                <Link
-                  href="/dashboard/profile"
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <User size={20} />
-                  <span>My Profile</span>
-                </Link>
-              )}
-
-
-              {/* Other Navigation Links */}
-              <Link
-                href="/tracking-order"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Package size={20} />
-                <span>Track Order</span>
-              </Link>
-
-              <Link
-                href="/wishlist"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Heart size={20} />
-                <span>Wishlist</span>
-              </Link>
-
-              <Link
-                href="/about"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Info size={20} />
-                <span>About Us</span>
-              </Link>
-
-              <Link
-                href="/contact-us"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Phone size={20} />
-                <span>Contact Us</span>
-              </Link>
-
-              <Link
-                href="/privacy-policy"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Shield size={20} />
-                <span>Privacy Policy</span>
-              </Link>
-
-              <Link
-                href="/return-policy"
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <RotateCcw size={20} />
-                <span>Return & Refund</span>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </div>
 
       {/* ===== Desktop/Large Screen ===== */}
       <div className="hidden lg:block w-full bg-accent border-b border-neutral shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 w-full md:px-6 lg:px-36">
           <div className="flex items-center justify-between h-16">
             {/* Logo + Title */}
-            <div className="flex items-center space-x-3 flex-shrink-0">
+            <div className="flex items-center space-x-3 ml-3 flex-shrink-0">
               <Link
                 href="/"
                 className="flex items-center"
@@ -352,7 +92,7 @@ export default function Navbar() {
                     alt=" Royal Bag House Logo"
                     width={120}
                     height={40}
-                    className="h-10"
+                    className="h-16"
                     style={{ width: "auto" }}
                   />
                 ) : (
@@ -364,13 +104,9 @@ export default function Navbar() {
             </div>
 
             {/* Search Area */}
-            <div className="flex-1 flex justify-center lg:ml-30">
-              <div className="flex items-center gap-2 w-full max-w-2xl">
-                <div className="flex-1 flex justify-center">
-                  <div className="w-full max-w-2xl">
-                    <SmartSearch />
-                  </div>
-                </div>
+            <div className="flex-1 flex justify-center mx-8">
+              <div className="w-full max-w-2xl">
+                <SmartSearch />
               </div>
             </div>
 
@@ -378,7 +114,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3 flex-shrink-0">
               <Link
                 href="/contact-us"
-                className="inline-flex items-center text-accent gap-2 px-3 py-2 rounded-md border border-neutral hover:bg-secondary bg-primary"
+                className="inline-flex items-center text-primary gap-2 px-3 py-3 rounded-md border border-neutral hover:bg-gray-100 "
                 aria-label="contact"
               >
                 <Headphones size={18} />
@@ -386,7 +122,7 @@ export default function Navbar() {
 
               <Link
                 href="/wishlist"
-                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-primary hover:text-white"
+                className="relative inline-flex items-center text-primary justify-center h-10 w-10 rounded-md border border-neutral hover:bg-gray-100"
                 aria-label="wishlist"
               >
                 <Heart size={18} />
@@ -399,7 +135,7 @@ export default function Navbar() {
 
               <Link
                 href="/dashboard/checkout"
-                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-primary hover:text-white"
+                className="relative inline-flex items-center justify-center h-10 w-10 rounded-md border border-neutral hover:bg-gray-100"
                 aria-label="cart"
               >
                 <ShoppingCart size={18} />
@@ -420,28 +156,9 @@ export default function Navbar() {
           {/* Normal State */}
           {!isSearchActive && (
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button
-                  className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 transition-colors"
-                  aria-label="Menu"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                >
-                  <Menu size={20} />
-                </button>
-                <Link href="/" className="flex items-center">
-                  {/* {settings?.logo ? (
-                    <Image
-                      src={settings.logo}
-                      alt=" Royal Bag House Logo"
-                      width={80}
-                      height={32}
-                      className="h-8 w-auto"
-                    />
-                  ) : ( */}
-                  <span className="font-bold text-xl text-accent"> Royal Bag House </span>
-                  {/* )} */}
-                </Link>
-              </div>
+              <Link href="/" className="flex items-center">
+                <span className="font-bold text-xl text-accent"> Royal Bag House </span>
+              </Link>
 
               <div className="flex items-center gap-2">
                 <button
@@ -504,7 +221,7 @@ export default function Navbar() {
                 className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 transition-colors flex-shrink-0"
                 aria-label="Close search"
               >
-                <Menu size={20} />
+                <X size={20} />
               </button>
 
               <div className="flex-1">

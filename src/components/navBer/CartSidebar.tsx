@@ -11,6 +11,21 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { selectCustomer, setCustomer, updateCartItemQuantity } from "@/redux/featured/customer/customerSlice";
 
+// Sanitize user input to prevent XSS
+const sanitizeText = (text: string | undefined | null): string => {
+  if (!text) return '';
+  return String(text).replace(/[<>"'&]/g, (match) => {
+    const escapeMap: { [key: string]: string } = {
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      '&': '&amp;'
+    };
+    return escapeMap[match] || match;
+  });
+};
+
 interface CartItems {
   productId: [IProduct];
   quantity: number;
@@ -140,7 +155,7 @@ export default function CartSidebar({
                           src={
                             item.productId[0].featuredImg || '/placeholder.png'
                           }
-                          alt={item.productId[0].description?.name}
+                          alt={sanitizeText(item.productId[0].description?.name) || 'Product image'}
                           width={48}
                           height={48}
                           className="object-cover"
@@ -149,7 +164,7 @@ export default function CartSidebar({
 
                       <div className="flex-1">
                         <h3 className="font-medium text-sm">
-                          {item.productId[0].description?.name}
+                          {sanitizeText(item.productId[0].description?.name) || 'Unnamed Product'}
                         </h3>
                         <p className="text-sm font-semibold">
                           ${item.productId[0].productInfo?.price.toFixed(2)}

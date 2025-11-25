@@ -231,9 +231,9 @@ export default function ProductSixGrid({
   return (
     <section className="w-full bg-white">
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
-        <h2 className="text-lg sm:text-xl font-semibold text-secondary mb-3">
+        {/* <h2 className="text-lg sm:text-xl font-semibold text-secondary mb-3">
           {title}
-        </h2>
+        </h2> */}
 
         {isLoading ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4">

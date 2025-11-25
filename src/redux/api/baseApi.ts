@@ -18,6 +18,10 @@ export const baseApi = createApi({
       return headers;
     },
   }),
+  refetchOnMountOrArgChange: false,
+  refetchOnFocus: false,
+  refetchOnReconnect: false,
+  keepUnusedDataFor: 3600,
   tagTypes: [
     "Product",
     "Category",

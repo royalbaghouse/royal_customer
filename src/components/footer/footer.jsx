@@ -6,6 +6,7 @@ import { Facebook} from "lucide-react";
 import { useAppSelector } from "@/redux/hooks";
 import { selectCurrentUser } from "@/redux/featured/auth/authSlice";
 import { useGetSettingsQuery } from "@/redux/featured/settings/settingsApi";
+import { useMemo } from "react";
 
 export default function Footer() {
   const appStoreUrl =
@@ -20,6 +21,20 @@ export default function Footer() {
   // const sellerHref = isLoggedIn ? "/sr" : "/auth/login";
 
   const sellerHref = "https://AR-fashion-admin-panel.app/auth/login";
+
+  const whatsappUrl = useMemo(() => {
+    const whatsappLink = settings?.contactAndSocial?.whatsappLink?.[0];
+    const phone = settings?.contactAndSocial?.phone || '';
+    
+    // If whatsappLink exists and is a proper URL, use it
+    if (whatsappLink && (whatsappLink.startsWith('https://wa.me/') || whatsappLink.startsWith('https://api.whatsapp.com/'))) {
+      return whatsappLink;
+    }
+    
+    // Otherwise, create proper WhatsApp URL from phone number
+    const cleanPhone = phone.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+    return `https://wa.me/${cleanPhone}`;
+  }, [settings?.contactAndSocial?.whatsappLink, settings?.contactAndSocial?.phone]);
 
   return (
     <footer className="bg-gray-50 py-12 px-6">
@@ -153,19 +168,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={(() => {
-                    const whatsappLink = settings?.contactAndSocial?.whatsappLink?.[0];
-                    const phone = settings?.contactAndSocial?.phone || '';
-                    
-                    // If whatsappLink exists and is a proper URL, use it
-                    if (whatsappLink && (whatsappLink.startsWith('https://wa.me/') || whatsappLink.startsWith('https://api.whatsapp.com/'))) {
-                      return whatsappLink;
-                    }
-                    
-                    // Otherwise, create proper WhatsApp URL from phone number
-                    const cleanPhone = phone.replace(/[^0-9]/g, ''); // Remove non-numeric characters
-                    return `https://wa.me/${cleanPhone}`;
-                  })()}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-green-600 transition-colors flex items-center gap-2"
@@ -199,9 +202,9 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-600">
               
                <li>
-                <a href="/product-listing" className="hover:text-black transition-colors">
+                <Link href="/product-listing" className="hover:text-black transition-colors">
                   Shop
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/tracking-order" className="hover:text-black transition-colors">
@@ -229,14 +232,14 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-600">
               
               <li>
-                <a href="/about" className="hover:text-black transition-colors">
+                <Link href="/about" className="hover:text-black transition-colors">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact-us" className="hover:text-black transition-colors">
+                <Link href="/contact-us" className="hover:text-black transition-colors">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

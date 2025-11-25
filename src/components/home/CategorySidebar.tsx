@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { useState, useRef } from "react";
+import { ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import { useGetAllCategoryQuery } from "@/redux/featured/category/categoryApi";
 
 type RemoteCategory = {
@@ -20,6 +20,9 @@ type UICategory = {
 export default function CategorySidebar() {
   const { data: remoteCats, isSuccess } = useGetAllCategoryQuery();
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const [canScrollUp, setCanScrollUp] = useState(false);
+  const [canScrollDown, setCanScrollDown] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const cats: UICategory[] =
     isSuccess && Array.isArray(remoteCats) && remoteCats.length
@@ -43,11 +46,67 @@ export default function CategorySidebar() {
     });
   };
 
+  const checkScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+      setCanScrollUp(scrollTop > 0);
+      setCanScrollDown(scrollTop < scrollHeight - clientHeight - 1);
+    }
+  };
+
+  const scrollUp = () => {
+    if (scrollContainerRef.current && canScrollUp) {
+      scrollContainerRef.current.scrollBy({ top: -200, behavior: 'smooth' });
+    }
+  };
+
+  const scrollDown = () => {
+    if (scrollContainerRef.current && canScrollDown) {
+      scrollContainerRef.current.scrollBy({ top: 200, behavior: 'smooth' });
+    }
+  };
+
   return (
     <aside className="hidden md:block md:col-span-3 lg:col-span-2">
-      <div className="border rounded-lg overflow-hidden h-44 sm:h-56 md:h-64 lg:h-80 xl:h-96">
+      <div className="border rounded-lg overflow-hidden h-44 sm:h-56 md:h-64 lg:h-80 xl:h-96 relative">
         <div className="px-3 bg-[#2E2E2E] py-2 font-medium border-b text-white">Categories</div>
-        <div className="overflow-y-auto h-full">
+        
+        {/* Up Arrow Button */}
+        <div className="absolute top-10 left-0 right-0 h-8 bg-white flex items-center justify-center border-b">
+          <button
+            onClick={scrollUp}
+            disabled={!canScrollUp}
+            className={`rounded px-3 py-1 transition-all duration-200 ${
+              canScrollUp 
+                ? 'bg-primary hover:bg-primary-hover hover:scale-105 hover:shadow-lg cursor-pointer' 
+                : 'bg-gray-300 cursor-not-allowed'
+            }`}
+          >
+            <ChevronUp size={14} className={canScrollUp ? 'text-white' : 'text-gray-500'} />
+          </button>
+        </div>
+        
+        {/* Down Arrow Button */}
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-white flex items-center justify-center border-t">
+          <button
+            onClick={scrollDown}
+            disabled={!canScrollDown}
+            className={`rounded px-3 py-1 transition-all duration-200 ${
+              canScrollDown 
+                ? 'bg-primary hover:bg-primary-hover hover:scale-105 hover:shadow-lg cursor-pointer' 
+                : 'bg-gray-300 cursor-not-allowed'
+            }`}
+          >
+            <ChevronDown size={14} className={canScrollDown ? 'text-white' : 'text-gray-500'} />
+          </button>
+        </div>
+        
+        <div 
+          ref={scrollContainerRef}
+          className="overflow-y-auto no-scrollbar px-4 py-8"
+          style={{ height: 'calc(100% - 40px)' }}
+          onScroll={checkScrollPosition}
+        >
           <ul className="divide-y">
             {cats.map((c) => (
               <li key={c.id} className="text-sm">

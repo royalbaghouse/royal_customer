@@ -167,16 +167,11 @@ function TopReviewedImpl({
     <section className="w-full">
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
         {/* Header */}
-        <div className="mb-3 flex items-center justify-between">
-          <h3 className="text-lg font-bold sm:text-xl text-secondary">{title}</h3>
-          <Link href="/reviews" className="text-sm text-highlight hover:underline hover:text-primary">
-            View all
-          </Link>
-        </div>
+        
 
         {!loading && !error && isFallback && (
           <div className="mb-3 rounded-md border border-blue-200 bg-blue-50 px-3 py-2 text-xs text-blue-800">
-            Showing smart picks as we couldn&apos;t find rated products right now.
+            Showing smart picks based on top reviews, as we couldn&apos;t find rated products right now.
           </div>
         )}
 

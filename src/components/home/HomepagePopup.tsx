@@ -5,20 +5,19 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import Image from "next/image";
 
+// Global flag to track if popup was shown in this session
+let popupShownInSession = false;
+
 export default function HomepagePopup() {
   const { data: settings } = useGetSettingsQuery();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (!settings?.enableHomepagePopup) return;
-
-    const hasSeenPopup = sessionStorage.getItem("homepage-popup-seen");
-    if (hasSeenPopup === "true") {
-      return;
-    }
+    if (!settings?.enableHomepagePopup || popupShownInSession) return;
 
     const timer = setTimeout(() => {
       setIsVisible(true);
+      popupShownInSession = true;
     }, settings.popupDelay || 3000);
 
     return () => clearTimeout(timer);
@@ -26,7 +25,7 @@ export default function HomepagePopup() {
 
   const handleClose = () => {
     setIsVisible(false);
-    sessionStorage.setItem("homepage-popup-seen", "true");
+    popupShownInSession = true;
   };
 
   if (!isVisible || !settings?.enableHomepagePopup) return null;
